@@ -5,10 +5,10 @@ start_kb_start = ReplyKeyboardMarkup(
 	keyboard=[
 		[
 		KeyboardButton(text='/about'),
+		KeyboardButton(text='/my_id'),
 		KeyboardButton(text='/admin'),
 		KeyboardButton(text='/user_private'),
-		KeyboardButton(text='/next'),
-		KeyboardButton(text='/exit')
+		KeyboardButton(text='/next')
 		],
 	],
 	resize_keyboard=True,
@@ -22,8 +22,6 @@ start_kb_admin = ReplyKeyboardMarkup(
 		[
 		KeyboardButton(text='/add_private_user'),
 		KeyboardButton(text='/remove_private_user'),
-		KeyboardButton(text='/schedule'),
-		KeyboardButton(text='/help'),
 		KeyboardButton(text='/exit')
 		],
 	],
