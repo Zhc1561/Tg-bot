@@ -19,9 +19,7 @@ async def my_id(message: types.Message):
     await message.answer(f"Ваш ID: {message.from_user.id} ")
 
 
-@user_private_router.message(Command('user_private'))
-async def user_private(message: types.Message):
-    await message.answer('Вы вошли как довереный пользователь!',reply_markup = reply.start_kb_private_user)
+
 
 @user_private_router.message(Command('next'))
 async def user_next(message: types.Message):
