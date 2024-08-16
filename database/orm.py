@@ -20,3 +20,4 @@ async def orm_id(session: AsyncSession):
         query = select(IdUser)
         r = await session.execute(query)
         return r.scalars().all()
+

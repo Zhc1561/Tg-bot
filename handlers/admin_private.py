@@ -3,7 +3,7 @@ from aiogram.filters import Command,StateFilter
 from aiogram.fsm.state import State, StatesGroup
 from aiogram.fsm.context import FSMContext
 from sqlalchemy.ext.asyncio import AsyncSession
-from database.orm import orm_add_id, orm_delete_id
+from database.orm import orm_add_id, orm_delete_id, orm_id
 
 
 from filters.chat_types import IsAdmin
@@ -47,7 +47,7 @@ async def user_private(message: types.Message, state: FSMContext,session = Async
 
 @admin_router.message(StateFilter(None),Command('remove_private_user'))
 async def remove_private_user(message: types.Message, state: FSMContext):
-    await message.answer('Введите id пользователя в таблице, которого хотите удалить')
+    await message.answer('Введите БД-id пользователя, которого хотите удалить')
 
     await state.set_state(RemoveUser.user_delet_id)
 
@@ -64,9 +64,18 @@ async def user_private(message: types.Message, state: FSMContext, session = Asyn
 
     await state.clear()
     
+@admin_router.message(Command('all_users'))
+async def users(message: types.Message,session = AsyncSession):
+    for idd in await orm_id(session):
+        await message.answer('БД-id: '+str(idd.id)+' Telegram-id: '+str(idd.iduser))
+    
+    await message.answer('Вот список всех доверенных пользователей.')
 
-
-
-
- 
-
+@admin_router.message(Command('help_a'))
+async def user_a(message: types.Message):
+    await message.answer('''Вам доступны 4 команды:
+        1. /add_private_user - добавить доверенного пользователя.
+        2. /remove_private_user - удалить доверенного пользователя.
+        3. /all_users - просмотреть список всех доверенных пользователей.
+        4. /exit - выйти.
+        ''')

@@ -22,6 +22,8 @@ start_kb_admin = ReplyKeyboardMarkup(
 		[
 		KeyboardButton(text='/add_private_user'),
 		KeyboardButton(text='/remove_private_user'),
+		KeyboardButton(text='/all_users'),
+		KeyboardButton(text='/help_a'),
 		KeyboardButton(text='/exit')
 		],
 	],
@@ -36,8 +38,7 @@ start_kb_private_user = ReplyKeyboardMarkup(
 		[
 		KeyboardButton(text='/wiki'),
 		KeyboardButton(text='/stack_over_flow'),
-		KeyboardButton(text='/schedule'),
-		KeyboardButton(text='/help'),
+		KeyboardButton(text='/help_p'),
 		KeyboardButton(text='/exit')
 		],
 	],
@@ -51,7 +52,7 @@ start_kb_user = ReplyKeyboardMarkup(
 	keyboard=[
 		[
 		KeyboardButton(text='/schedule'),
-		KeyboardButton(text='/help'),
+		KeyboardButton(text='/help_u'),
 		KeyboardButton(text='/exit')
 		],
 	],
