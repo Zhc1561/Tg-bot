@@ -4,6 +4,9 @@ from aiogram.fsm.state import State, StatesGroup
 from aiogram.fsm.context import FSMContext
 from sqlalchemy.ext.asyncio import AsyncSession
 
+
+
+
 from bs4 import BeautifulSoup
 import requests
 import json
@@ -114,9 +117,7 @@ async def flow2(message: types.Message, state: FSMContext,session = AsyncSession
         
     
 
-
-
-    await state.clear()
+    
 
 
 
